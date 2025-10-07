@@ -1,0 +1,9 @@
+<% @cartoons.each do |cartoon| %>
+  <p>
+    <%= link_to cartoon.title, cartoon_path(cartoon) %>
+    <%= link_to '削除', "/cartoons/#{cartoon.id}", data: {turbo_method: :delete} %>
+     <%= link_to '表示', "/cartoons/#{cartoon.id}" %>
+     <%= link_to '編集', "/cartoons/#{cartoon.id}/edit" %>
+  </p>
+<% end %>
+<p><%= link_to '新規追加', '/cartoons/new' %></p>

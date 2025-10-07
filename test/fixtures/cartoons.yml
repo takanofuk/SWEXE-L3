@@ -1,0 +1,14 @@
+cartoon_one:
+  title: "ドラえもん"
+  author: "藤子・F・不二雄"
+  description: "未来の猫型ロボットが活躍する話"
+
+cartoon_two:
+  title: "ワンピース"
+  author: "尾田栄一郎"
+  description: "海賊の冒険の物語"
+
+cartoon_three:
+  title: "ナルト"
+  author: "岸本斉史"
+  description: "忍者の成長物語"
