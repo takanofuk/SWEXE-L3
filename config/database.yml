@@ -1,29 +1,35 @@
+default: &default
+  adapter: sqlite3
+  pool: <%= ENV.fetch("RAILS_MAX_THREADS") { 5 } %>
+  timeout: 5000
+
+development:
+  <<: *default
+  database: storage/development.sqlite3
+
+# Warning: The database defined as "test" will be erased and
+# re-generated from your development database when you run "rake".
+# Do not set this db to the same as development or production.
+test:
+  <<: *default
+  database: storage/test.sqlite3
+
+
+# Store production database in the storage/ directory, which by default
+# is mounted as a persistent Docker volume in config/deploy.yml.
 production:
-  adapter: postgresql
-  encoding: unicode
-  pool: 5
-  database: ex3_rsmp          # Render の DB 名
-  username: ex3_rsmp_user     # Render のユーザー名
-  password: <%= ENV['MYSITE_DATABASE_PASSWORD'] %>
-  host: dpg-d3ih34re5dus7394ugrg-a   # Render のホスト名
-  port: 5432
-
- 
+  primary: &primary_production
+    <<: *default
+    adapter: postgresql
+    encoding: unicode
+    pool: 5
+    database: ex3_rsmp
+    username: ex3_rsmp_user_user
+    password: <%= ENV['MYSITE_DATABASE_PASSWORD'] %>
+    url: <%= ENV['DATABASE_URL'] %>
   cache:
-    adapter: postgresql
-    encoding: unicode
-    database: ex3_rsmp
-    username: ex3_rsmp_user
-    password: <%= ENV['MYSITE_DATABASE_PASSWORD'] %>
-    host: dpg-d3ih34re5dus7394ugrg-a
-    port: 5432
-
+    <<: *primary_production
   queue:
-    adapter: postgresql
-    encoding: unicode
-    database: ex3_rsmp
-    username: ex3_rsmp_user
-    password: <%= ENV['MYSITE_DATABASE_PASSWORD'] %>
-    host: dpg-d3ih34re5dus7394ugrg-a
-    port: 5432
-
+    <<: *primary_production
+  cable:
+    <<: *primary_production
