@@ -1,0 +1,6 @@
+production:
+  database: queue
+development:
+  database: queue
+test:
+  database: queue
