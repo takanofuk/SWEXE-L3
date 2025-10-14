@@ -12,12 +12,13 @@ test:
   database: myapp_test
 
 production:
-  <<: *default
-  url: <%= ENV["DATABASE_URL"] %>
-  database: myapp_production
-  queue:
+  primary: &primary_production
     <<: *default
-    url: <%= ENV["DATABASE_URL"] %>
-  cable:
-    <<: *default
-    url: <%= ENV["DATABASE_URL"] %>
+    adapter: postgresql
+    encoding: unicode
+    pool: 5
+    database: ex3_rsmp      # 各自のDB名に変更
+    username: ex3_rsmp_user  # 各自のユーザ名に変更
+    password: <%= ENV['MYSITE_DATABASE_PASSWORD'] %>
+    url: <%= ENV['DATABASE_URL'] %>
+
