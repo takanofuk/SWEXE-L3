@@ -24,9 +24,9 @@ module Myapp
     # config.time_zone = "Central Time (US & Canada)"
     # config.eager_load_paths << Rails.root.join("extras")
 
-    # --- ★ ここを修正！ ---
-    # SolidQueue（Rails8標準のジョブキュー）を使わずに、
-    # 環境によらずシンプルな :inline 実行に変更
+    # --- Solid Queueを無効化してRenderでも動作するように設定 ---
+    # Rails 8 では Solid Queue がデフォルトで有効だが、
+    # Render 環境ではバックグラウンドジョブを動かさないため :inline に変更
     config.active_job.queue_adapter = :inline
   end
 end
