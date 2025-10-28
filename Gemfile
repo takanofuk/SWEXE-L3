@@ -30,11 +30,12 @@ gem "thruster", require: false
 gem "tzinfo-data", platforms: %i[windows jruby]
 
 # 開発環境専用
-group :development do
-  gem "sqlite3", ">= 2.1"       # 開発用DB
-  gem "web-console"             # 例外ページでのコンソール
-  gem "debug", platforms: %i[mri windows], require: "debug/prelude"
-end
+#gem "sqlite3" #, group: :development       # 開発用DB
+
+#group :development do
+#  gem "web-console"             # 例外ページでのコンソール
+#  gem "debug", platforms: %i[mri windows], require: "debug/prelude"
+#end
 
 # テスト環境専用
 group :test do
